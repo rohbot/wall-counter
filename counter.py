@@ -49,6 +49,7 @@ img_start = pygame.transform.scale(img_start,(1280,720))
 img_finish = pygame.image.load(PATH + "ENGFN.jpg")
 img_finish = pygame.transform.scale(img_finish,(1280,720))
 
+img_dc = pygame.transform.scale(pygame.image.load(PATH + "dc.png"),(1280,720))
 
 
 def showLogo():
@@ -210,9 +211,23 @@ connect()
 showLogo()
 pygame_init()
 while 1:
-	waitForStart()
-	sendStart()
-	readSerial()
-	waitForValid()
+	try:
+		waitForStart()
+		sendStart()
+		readSerial()
+		waitForValid()
+
+	except KeyboardInterrupt:
+		raise
+	except:
+		e = sys.exc_info()
+
+		print "something messed up", e
+		screen.blit(img_dc, (0, 0))
+		pygame.display.flip()
+
+		connect()
+		time.sleep(1)
+	
 
 
