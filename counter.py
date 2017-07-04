@@ -34,19 +34,19 @@ images = []
 global counting, start_time, r_counter, l_counter
 
 for i in range(10):
-	fn = PATH + '/ENG0' + str(i) + '.png'
+	fn = PATH + '/MAT0' + str(i) + '.png'
 	images.append(pygame.image.load(fn))
 
-img_rp = pygame.image.load(PATH + "ENGRP.png")
+img_rp = pygame.image.load(PATH + "MATRP.png")
 img_rp = pygame.transform.scale(img_rp,(1280,720))
 
-img_ready = pygame.image.load(PATH + "ENGGR.png")
+img_ready = pygame.image.load(PATH + "MATGR.png")
 img_ready = pygame.transform.scale(img_ready,(1280,720))
 
-img_start = pygame.image.load(PATH + "ENGST.jpg")
+img_start = pygame.image.load(PATH + "MATST.jpg")
 img_start = pygame.transform.scale(img_start,(1280,720))
 
-img_finish = pygame.image.load(PATH + "ENGFN.jpg")
+img_finish = pygame.image.load(PATH + "MATFN.jpg")
 img_finish = pygame.transform.scale(img_finish,(1280,720))
 
 img_dc = pygame.transform.scale(pygame.image.load(PATH + "dc.png"),(1280,720))
