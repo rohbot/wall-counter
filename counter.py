@@ -113,6 +113,14 @@ def waitForStart():
 				if item['data'] == 'S':
 					start_pressed = True
 					pubsub.unsubscribe()
+				if item['data'] == 'x':
+					pubsub.unsubscribe()
+					pygame.quit()
+					print 'Shutting down'
+					time.sleep(1)
+					os.system('sudo shutdown -h now')
+					#sys.exit()
+				
 		time.sleep(0.01)
 
 
@@ -121,6 +129,7 @@ def waitForValid():
 	r.publish('tokens','F')
 	screen.blit(img_finish, (0, 0))
 	pygame.display.flip()
+	os.system("(sleep 300; redis-cli  -h " + SERVER + "publish " + TOPIC + " V) &")
 	pubsub.subscribe(TOPIC)
 
 	valid = False
@@ -133,6 +142,14 @@ def waitForValid():
 				if item['data'] == 'V':
 					valid = True
 					pubsub.unsubscribe()
+				if item['data'] == 'x':
+					pubsub.unsubscribe()
+					pygame.quit()
+					print 'Shutting down'
+					time.sleep(1)
+					os.system('sudo shutdown -h now')
+					sys.exit()
+					
 		time.sleep(0.01)
 	tokens = 0
 	ser.write('V')
